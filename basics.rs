@@ -16,5 +16,13 @@ fn main() {
             let even_odd = if num % 2 == 0 { "even" } else { "odd" };
             println!("{} {}", even_odd, num);
         }
+
+        // example of rust mutable
+        // note that rust is strongly typed unlike javascript or python
+        let mut sum = 0.0;
+        for i in 0..5 {
+            sum += i as f64;
+        }
+        println!("sum is {}", sum);
     }
 }
