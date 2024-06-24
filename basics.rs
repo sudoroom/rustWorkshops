@@ -12,6 +12,7 @@ fn main() {
         }
 
         for num in 0..10 {
+            // in rust nearly everything has a value and can be an expression
             let even_odd = if num % 2 == 0 { "even" } else { "odd" };
             println!("{} {}", even_odd, num);
         }
