@@ -1,0 +1,2 @@
+# Rust Workshops at SudoRoom
+
