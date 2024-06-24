@@ -10,5 +10,10 @@ fn main() {
         } else {
             println!("odd {}", i);
         }
+
+        for num in 0..10 {
+            let even_odd = if num % 2 == 0 { "even" } else { "odd" };
+            println!("{} {}", even_odd, num);
+        }
     }
 }
