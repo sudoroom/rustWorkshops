@@ -1,0 +1,1 @@
+/Users/romyilano/Developer/hackerspaces/sudoroom/rustWorkshops/chapters/guessing_game/guessing_game/target/debug/guessing_game: /Users/romyilano/Developer/hackerspaces/sudoroom/rustWorkshops/chapters/guessing_game/guessing_game/src/main.rs
