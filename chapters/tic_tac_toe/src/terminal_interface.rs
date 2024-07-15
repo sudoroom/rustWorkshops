@@ -11,4 +11,18 @@ pub fn print_grid(grid_values: &Vec<String>) {
         return;
     }
     println!("Raw value of grid is {:?}", grid_values);
+    let mut grid_output_string = String::new();
+    let line = "\n-------------\n";
+
+    grid_output_string.push_str(&format!("{line}"));
+
+    for (i, value) in grid_values.iter().enumerate() {
+        grid_output_string.push_str(&format!("|{:^3}", value));
+        
+        if i%3 == 2 {
+            grid_output_string.push_str(&format!("|\n-------------\n"));
+        }
+    }
+
+    println!("{grid_output_string}");
 }
