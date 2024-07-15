@@ -1,5 +1,7 @@
 use std::io;
 use rand::Rng;
+use std::cmp::Ordering;
+
 
 fn main() {
     println!("Welcome to the SudoRoom guessing game!");
@@ -15,4 +17,18 @@ fn main() {
         .expect("Failed to read line");
 
     println!("You guessed: {guess}");
+
+    // some shadowing
+    let guess: u32 = guess
+                        .trim()
+                        .parse()
+                        .expect("Please type a number!");
+
+    match guess.cmp(&secret_number) {
+        // a match is made up of arms
+        // arm consist of a pattern to match against the code that should be run
+        Ordering::Less => println!("Too Small!"),
+        Ordering::Greater => println!("Too big!"),
+        Ordering::Equal => println!("You win!"),
+    }
 }
