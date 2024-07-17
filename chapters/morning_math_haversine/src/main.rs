@@ -1,3 +1,41 @@
+
+struct Coordinate {
+    latitude: f64, 
+    longitude: f64,
+}
+
+impl Coordinate {
+    fn new(latitude: f64, longitude: f64) -> Self {
+        Self { latitude, longitude }
+    }
+
+    fn description(&self) -> String {
+        format!("Latitude: {}, Longitude: {}", self.latitude, self.longitude)
+    }
+}
+
+// destructuring - fn calculate_distance((latitude1, longitude1): (f64, f64), (latitude2, longitude2): (f64, f64)) -> f64 {
+fn calculateDistance(location1: (f64, f64), location2: (f64, f64)) -> f64 {
+    // 
+    let (latitude1_degrees, longitude1_degrees) = location1;
+    let (latitude2_degrees, longitude2_degrees) = location2;
+
+    let latitude1 = latitude1_degrees.to_radians();
+    let latitude2 = latitude2_degrees.to_radians();
+
+    let delta_latitude = (latitude1_degrees - latitude2_degrees).to_radians();
+    let delta_longitude = (longitude1_degrees - longitude2_degrees).to_radians();
+
+    let central_angle_inner = (delta_latitude / 2.0).sin().powi(2) + 
+        latitude1.cos() * latitude2.cos() & (delta_longitude/2.0).sin().powi(2);
+
+    let central_angle = 2.0 * central_angle_inner.sqrt().asin();
+
+    let distance = EARTH_RADIUS_KILOMETER * central_angle;
+}
+
+const EARTH_RADIUS_KILOMETER = 6371.0_f64;
+
 fn main() {
     let earth_radius_kilometer = 6371.0_f64;
 
@@ -26,6 +64,4 @@ fn main() {
         "Distance between sudoroom and Paris on the surface of the earth is {:.1} km",
         distance
     );
-
-
 }
