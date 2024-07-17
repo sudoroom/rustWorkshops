@@ -1,6 +1,59 @@
 
+// use std::io;
+
 const EARTH_RADIUS_KILOMETER: f64 = 6371.0_f64;
 
+fn main() {
+    online_sample();
+ 
+    let distance_paris_sudoroom = calculate_distance((835004_f64, -122.2641282_f64), (48.85341_f64, -2.34880_f64));
+    println!("The distance from paris to sudoroom is {} kilometers", distance_paris_sudoroom);
+
+    println!("What is the name of the first location?");
+
+    let sudo_coordinate = Coordinate::new(835004_f64, -122.2641282_f64);
+
+    println!("{:?}", sudo_coordinate);
+    println!("{}", sudo_coordinate.description());
+    let location_sudoroom = Location { 
+        name: "SudoRoom".to_string(), 
+        coordinate: Coordinate { 
+            latitude: 835004_f64, 
+            longitude: -122.2641282_f64
+        }
+    };
+    // (48.85341_f64, -2.34880_f64)
+    let location_paris = Location { 
+        name: "Paris".to_string(), 
+        coordinate: Coordinate { 
+            latitude: 48.85341_f64, 
+            longitude: -2.34880_f64
+        }
+    };
+
+    println!("the location is {:?}", location_sudoroom);
+
+    let second_distance = calculate_distance_earth(&location_sudoroom, &location_paris);
+    println!("The distance between {:?} and {:?} is {:1} kilometers", 
+        location_sudoroom.name, 
+        location_paris.name, 
+        second_distance);
+ }
+
+fn calculate_distance_earth(location_one: &Location, location_two: &Location) -> f64 {
+    let place_one = (location_one.coordinate.latitude, location_one.coordinate.longitude);
+    let place_two = (location_two.coordinate.latitude, location_two.coordinate.longitude);
+
+    let distance = calculate_distance(place_one, place_two);
+    distance
+}
+ 
+ #[derive(Debug)]
+struct Location {
+    name: String,
+    coordinate: Coordinate
+}
+#[derive(Debug)]
 struct Coordinate {
     latitude: f64, 
     longitude: f64,
@@ -15,6 +68,7 @@ impl Coordinate {
         format!("Latitude: {}, Longitude: {}", self.latitude, self.longitude)
     }
 }
+
 
 // destructuring - fn calculate_distance((latitude1, longitude1): (f64, f64), (latitude2, longitude2): (f64, f64)) -> f64 {
 fn calculate_distance(location1: (f64, f64), location2: (f64, f64)) -> f64 {
@@ -35,14 +89,6 @@ fn calculate_distance(location1: (f64, f64), location2: (f64, f64)) -> f64 {
 
     let distance = EARTH_RADIUS_KILOMETER * central_angle;
     distance
-}
-
-
-fn main() {
-   online_sample();
-
-   let distance_paris_sudoroom = calculate_distance((835004_f64, -122.2641282_f64), (48.85341_f64, -2.34880_f64));
-   println!("The distance from paris to sudoroom is {} kilometers", distance_paris_sudoroom);
 }
 
 fn online_sample() {

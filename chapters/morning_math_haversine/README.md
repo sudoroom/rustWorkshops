@@ -9,3 +9,4 @@ On why precision is super important in calculating distances on the earth!
 See the RUST formula here:
 
 - [https://rust-lang-nursery.github.io/rust-cookbook/science/mathematics/trigonometry.html#distance-between-two-points-on-the-earth](https://rust-lang-nursery.github.io/rust-cookbook/science/mathematics/trigonometry.html#distance-between-two-points-on-the-earth)
+
