@@ -1,10 +1,9 @@
 
-// use std::io;
+use std::io;
 
 const EARTH_RADIUS_KILOMETER: f64 = 6371.0_f64;
 
 fn main() {
-    online_sample();
  
     let distance_paris_sudoroom = calculate_distance((835004_f64, -122.2641282_f64), (48.85341_f64, -2.34880_f64));
     println!("The distance from paris to sudoroom is {} kilometers", distance_paris_sudoroom);
@@ -15,6 +14,29 @@ fn main() {
 
     println!("{:?}", sudo_coordinate);
     println!("{}", sudo_coordinate.description());
+
+    // let mut guess = String::new();
+
+    // io::stdin().read_line(&mut guess)
+    //             .expect("Failed to read line");
+
+    let mut location_one_name = String::new();
+
+    io::stdin().read_line(&mut location_one_name)
+        .expect("Failed to read line");
+
+    println!("Location one is {location_one_name}");
+
+    let mut location_one_longitude = String::new();
+    
+    io::stdin().read_line(&mut location_one_longitude)
+    .expect("Failed to read line");
+
+    let mut location_two_latitude = String::new();
+
+    io::stdin().read_line(&mut location_two_latitude)
+        .expect("Failed to read line");
+
     let location_sudoroom = Location { 
         name: "SudoRoom".to_string(), 
         coordinate: Coordinate { 
@@ -91,32 +113,32 @@ fn calculate_distance(location1: (f64, f64), location2: (f64, f64)) -> f64 {
     distance
 }
 
-fn online_sample() {
-    let earth_radius_kilometer = 6371.0_f64;
+// fn online_sample() {
+//     let earth_radius_kilometer = 6371.0_f64;
 
-    let (paris_latitude_degrees, paris_longitude_degrees) = (48.85341_f64, -2.34880_f64);
+//     let (paris_latitude_degrees, paris_longitude_degrees) = (48.85341_f64, -2.34880_f64);
 
-    // 835004,-122.2641282,15z
-    let (sudoroom_latitude_degrees, sudoroom_longitude_degrees) = (835004_f64, -122.2641282_f64);
+//     // 835004,-122.2641282,15z
+//     let (sudoroom_latitude_degrees, sudoroom_longitude_degrees) = (835004_f64, -122.2641282_f64);
     
-    let paris_latitude = paris_latitude_degrees.to_radians();
-    // let paris_longitude = paris_longitude_degrees.to_radians();
+//     let paris_latitude = paris_latitude_degrees.to_radians();
+//     // let paris_longitude = paris_longitude_degrees.to_radians();
 
-    let sudoroom_latitude = sudoroom_latitude_degrees.to_radians();
-    // let sudoroom_longitude = sudoroom_longitude_degrees.to_radians();
+//     let sudoroom_latitude = sudoroom_latitude_degrees.to_radians();
+//     // let sudoroom_longitude = sudoroom_longitude_degrees.to_radians();
 
-    let delta_latitude = (paris_latitude_degrees - sudoroom_latitude_degrees).to_radians();
-    let delta_longitude = (paris_longitude_degrees - sudoroom_longitude_degrees).to_radians();
+//     let delta_latitude = (paris_latitude_degrees - sudoroom_latitude_degrees).to_radians();
+//     let delta_longitude = (paris_longitude_degrees - sudoroom_longitude_degrees).to_radians();
 
-    let central_angle_inner = (delta_latitude / 2.0).sin().powi(2) +
-        paris_latitude.cos() * sudoroom_latitude.cos() * (delta_longitude/2.0).sin().powi(2);
+//     let central_angle_inner = (delta_latitude / 2.0).sin().powi(2) +
+//         paris_latitude.cos() * sudoroom_latitude.cos() * (delta_longitude/2.0).sin().powi(2);
 
-    let central_angle = 2.0 * central_angle_inner.sqrt().asin();
+//     let central_angle = 2.0 * central_angle_inner.sqrt().asin();
 
-    let distance = earth_radius_kilometer * central_angle;
+//     let distance = earth_radius_kilometer * central_angle;
 
-    println!(
-        "Distance between sudoroom and Paris on the surface of the earth is {:.1} km",
-        distance
-    );
-}
+//     println!(
+//         "Distance between sudoroom and Paris on the surface of the earth is {:.1} km",
+//         distance
+//     );
+// }
